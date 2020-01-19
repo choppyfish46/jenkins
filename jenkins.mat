@@ -29,31 +29,14 @@ class dropDown
         return test
 }
 
-node
-{
-    stage ("UI")
-    {
-        List params = []
-        List props = []
-    
-        Inst1 = dropDown.newInst("DDX")
-        Inst2 = dropDown.newInst("DDY")
-    
-        params << booleanParam(name: 'BOOLX', defaultValue: true, description: '')
-        params << Inst1
-        params << Inst2
-
-        props << parameters(params)
-        properties(props)
+node {
+    stage('Build') {
+        echo 'Building....'
     }
-
-    stage("T1")
-    {
-        echo "Value ${DDX}"
+    stage('Test') {
+        echo 'Testing....'
     }
-    
-    stage("T2")
-    {
-        echo "Value ${DDY}"
-    }                        
+    stage('Deploy') {
+        echo 'Deploying....'
+    }
 }
