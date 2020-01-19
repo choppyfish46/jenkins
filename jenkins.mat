@@ -51,11 +51,11 @@ node
 
     stage("T1")
     {
-        echo
+       
     }
     
     stage("T2")
     {
-        echo 
+        
     }                        
 }
