@@ -41,7 +41,7 @@ def jsonEditorOptions = Boon.fromJson(/{
 
 Pipeline Script
 
-#!groovy
+
 
 try {
     CheckoutRepos()
