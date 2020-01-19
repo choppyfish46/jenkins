@@ -1,0 +1,69 @@
+import org.boon.Boon;
+
+def jsonEditorOptions = Boon.fromJson(/{
+	disable_edit_json: true,
+        disable_properties: true,
+        no_additional_properties: true,
+        disable_collapse: true,
+        disable_array_add: true,
+        disable_array_delete: true,
+        disable_array_reorder: true,
+        show_errors: "always"
+        theme: "bootstrap3",
+        iconlib:"fontawesome4",
+        schema: {
+                 "title": "Save Artifacts Externally?",
+                 "oneOf": [
+                 {
+                     "title": "No",
+                     "type": "null",
+                     "options": {
+                         "disable_collapse": true,
+                         "disable_edit_json": true,
+                         "disable_properties": true,
+                          "theme": "bootstrap3",
+                          "show_errors": "always"
+                       }
+                  },
+                  {
+                      "title": "Yes",
+                      "type": "object",
+                      "properties": {
+                          "copypathType": {
+                               "title": "Path",
+                               "type": "string"
+                           }
+                       }
+                  }]
+         }
+}/);
+
+
+Pipeline Script
+
+#!groovy
+
+try {
+    CheckoutRepos()
+} catch(e) {
+    NotifyFail()
+    throw e
+}
+
+def CheckoutRepos() {
+    stage('Checkout') {
+        parallel 'W': {
+            node {
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: "${env.GIT_W_BRANCH}"]], browser: [$class: 'GitLab', repoUrl: 'http://gitlab.local/', version: '8.13'], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: true]], extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '1c228aa2-4af0-4026-b376-7244e2336083', url: '[hidden email]:f/W.git']]]
+            }
+        }, 's': {
+            node {
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: "${env.GIT_S_BRANCH}"]], browser: [$class: 'GitLab', repoUrl: 'http://gitlab.local/', version: '8.13'], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: true]], extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '1c228aa2-4af0-4026-b376-7244e2336083', url: '[hidden email]:f/s.git']]]
+            }
+        }, 'C': {
+            node {
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: "${env.GIT_C}"]], browser: [$class: 'GitLab', repoUrl: 'http://gitlab.local/', version: '8.13'], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CloneOption', depth: 0, noTags: true, reference: '', shallow: true]], extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '1c228aa2-4af0-4026-b376-7244e2336083', url: '[hidden email]:f/c.git']]]
+            }
+        }
+    }
+}
