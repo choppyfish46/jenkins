@@ -51,11 +51,11 @@ node
 
     stage("T1")
     {
-        echo "Value ${DDX}"
+        echo
     }
     
     stage("T2")
     {
-        echo "Value ${DDY}"
+        echo 
     }                        
 }
