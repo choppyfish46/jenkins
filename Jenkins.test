@@ -44,7 +44,7 @@ def jsonEditorOptions = Boon.fromJson(/{
 try {
     CheckoutRepos()
 } catch(e) {
-    NotifyFail()
+   
     throw e
 }
 
