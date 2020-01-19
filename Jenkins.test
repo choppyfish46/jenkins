@@ -39,8 +39,6 @@ def jsonEditorOptions = Boon.fromJson(/{
 }/);
 
 
-Pipeline Script
-
 
 
 try {
