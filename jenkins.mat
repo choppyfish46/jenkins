@@ -29,6 +29,8 @@ class dropDown
         return test
 }
 
+}
+
 node {
     stage('Build') {
         echo 'Building....'
