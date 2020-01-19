@@ -29,7 +29,7 @@ class dropDown
         return test
 }
 
-node("linux")
+node
 {
     stage ("UI")
     {
