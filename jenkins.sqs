@@ -5,7 +5,7 @@ class dropDown
         def com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition awsenv = 
           new com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition(
             name,
-            "PT_MULTI_SELECT",
+            "PT_SINGLE_SELECT",
             "rginger,navifydev,navifyqa,navifystaging,navifyproduction,",  // displayed selection values
             null,//project name
             null,null,null,
@@ -34,14 +34,14 @@ def static newStack(name)
         def com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition awsstack = 
           new com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition(
             name,
-            "PT_MULTI_SELECT",
+            "PT_SINGLE_SELECT",
             "dev01,dev02,dev03,dev04",  // displayed selection values
             null,//project name
             null,null,null,
             null,// bindings
             null,
             null, // propertykey
-            "rginger", //default value
+            "dev01", //default value
             null,null,null,
             null, //default bindings
             null,null,
