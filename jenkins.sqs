@@ -2,17 +2,17 @@ class dropDown
 {
     def static newInst(name)
     {
-        def com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition test = 
+        def com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition awsenv = 
           new com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition(
             name,
             "PT_MULTI_SELECT",
-            "A,B,C,D,E,F",  // displayed selection values
+            "rginger,navifydev,navifyqa,navifystaging,navifyproduction,",  // displayed selection values
             null,//project name
             null,null,null,
             null,// bindings
             null,
             null, // propertykey
-            "B", //default value
+            "rginger", //default value
             null,null,null,
             null, //default bindings
             null,null,
@@ -26,7 +26,7 @@ class dropDown
             null,
             "," // separator
         )
-        return test
+        return awsenv
 }
 
 }
@@ -38,7 +38,7 @@ node
         List params = []
         List props = []
     
-        Inst1 = dropDown.newInst("DDX")
+        Inst1 = dropDown.newInst("accountname")
         Inst2 = dropDown.newInst("DDY")
     
         params << booleanParam(name: 'BOOLX', defaultValue: true, description: '')
