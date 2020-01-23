@@ -1,0 +1,24 @@
+{
+    "data":[
+       {
+          "name":"0.0.18",
+          "isMetadata":"one"
+       },
+       {
+          "name":"0.0.10",
+          "isMetadata":"two"
+       },
+       {
+          "text":"metadata.xml",
+          "isMetadata":"true"
+       },
+       {
+          "text":"0.0.33",
+          "isMetadata":"false"
+       },
+       {
+          "text":"0.0.4",
+          "isMetadata":"false"
+       }
+    ]
+ }
